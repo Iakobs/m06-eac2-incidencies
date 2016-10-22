@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="JPA_OR_PU" transaction-type="RESOURCE_LOCAL">
+    <description>Objecte relacional amb anotacions i xml</description>
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <mapping-file>META-INF/incidencies.xml</mapping-file>
+    <class>dbImplJPA.empresaImpl.EmpresaImpl</class>
+    <class>dbImplJPA.empresaImpl.IncidenciaImpl</class>
+    <class>dbImplJPA.empresaImpl.IncidenciaUrgentImpl</class>
+    <class>dbImplJPA.empresaImpl.IncidenciaEstadarImpl</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/bdin_jpa_1617s1"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="ioc"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+    </properties>
+  </persistence-unit>
+  <persistence-unit name="JPA_OR_ANOTACIONS_PU" transaction-type="RESOURCE_LOCAL">
+    <description>Objecte relacional nomes amb les anotacions</description>
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>dbImplJPA.empresaImpl.EmpresaImpl</class>
+    <class>dbImplJPA.empresaImpl.IncidenciaImpl</class>
+    <class>dbImplJPA.empresaImpl.IncidenciaUrgentImpl</class>
+    <class>dbImplJPA.empresaImpl.IncidenciaEstadarImpl</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/bdin_jpa_an_1617s1"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="ioc"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+    </properties>
+  </persistence-unit>
+  <persistence-unit name="JPA_ODB_PU" transaction-type="RESOURCE_LOCAL">
+    <description>Base de dades Object DB. Nomes amb anotacions</description>
+    <provider>com.objectdb.jpa.Provider</provider>
+    <class>dbImplJPA.empresaImpl.EmpresaImpl</class>
+    <class>dbImplJPA.empresaImpl.IncidenciaImpl</class>
+    <class>dbImplJPA.empresaImpl.IncidenciaUrgentImpl</class>
+    <class>dbImplJPA.empresaImpl.IncidenciaEstadarImpl</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="/home/professor/Escriptori/curs16-17/bd_in"/>
+      <property name="javax.persistence.jdbc.user" value="admin"/>
+      <property name="javax.persistence.jdbc.password" value="admin"/>
+    </properties>
+  </persistence-unit>
+</persistence>
