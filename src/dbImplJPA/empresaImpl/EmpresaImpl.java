@@ -3,29 +3,42 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package dbImplJPA.empresaImpl;
-
 
 import empresa.Empresa;
 import empresa.Incidencia;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author professor
  */
+@Entity
+@NamedQueries({
+    @NamedQuery(name = "EmpresaImpl.obtenirEmpresaPerCodi",
+            query = "SELECT e FROM EmpresaImpl e WHERE e.codi = :codi")
+    ,
+    @NamedQuery(name = "EmpresaImpl.obtenirEmpresesOrdenadesPerNomEmpresa",
+            query = "SELECT e FROM EmpresaImpl e ORDER BY e.nomEmpresa")
+})
+public class EmpresaImpl implements Empresa, Serializable {
 
-public class EmpresaImpl implements Empresa, Serializable{
-
+    @Id
     private String codi;
     private String nomEmpresa;
     private String seuEmpresa;
-    private final List llistaIncidencies=new ArrayList();
+    @OneToMany(fetch = FetchType.LAZY,
+            mappedBy = "empresa",
+            targetEntity = IncidenciaImpl.class)
+    private final List llistaIncidencies = new ArrayList();
 
     /**
      *
@@ -80,23 +93,18 @@ public class EmpresaImpl implements Empresa, Serializable{
     public void setSeuEmpresa(String seuEmpresa) {
         this.seuEmpresa = seuEmpresa;
     }
-    
+
     /**
      *
      * @return
      */
     @Override
     public List<Incidencia> getLlistaIncidencies() {
-           return(List<Incidencia>) llistaIncidencies;
+        return (List<Incidencia>) llistaIncidencies;
     }
-    
-    
-    public void setLlistaIncidencies(List l){
+
+    public void setLlistaIncidencies(List l) {
         llistaIncidencies.clear();
         llistaIncidencies.addAll(l);
     }
-
-   
-
-
 }

@@ -3,17 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package dbImplJPA.empresaImpl;
 
 import empresa.*;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
 /**
  *
  * @author professor
  */
+@Entity
+@DiscriminatorValue(value = "E")
+public class IncidenciaEstadarImpl extends IncidenciaImpl implements IncidenciaEstandar {
 
-public class IncidenciaEstadarImpl extends IncidenciaImpl implements IncidenciaEstandar{
     private String email;
 
     @Override
@@ -25,7 +28,4 @@ public class IncidenciaEstadarImpl extends IncidenciaImpl implements IncidenciaE
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
-
 }
