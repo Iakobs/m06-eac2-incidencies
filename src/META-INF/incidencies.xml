@@ -13,5 +13,44 @@ version="2.0">
     les caracteristiques que tindra la taula (clau, nom dels camps, grandaria...)
     
     -->
+    <entity class="dbImplJPA.empresaImpl.EmpresaImpl" metadata-complete="false">
+        <table name="Empresa"/>
+        <attributes>
+            <id name="codi">
+                <column length="8"/>
+            </id>
+            <basic name="nomEmpresa">
+                <column length="30"/>
+            </basic>
+            <basic name="seuEmpresa">
+                <column length="30"/>
+            </basic>
+        </attributes>
+    </entity>
+    
+    <entity class="dbImplJPA.empresaImpl.IncidenciaImpl" metadata-complete="false">
+        <table name="Incidencia"/>
+        <inheritance strategy="SINGLE_TABLE"/>
+        <discriminator-column name="tipus" discriminator-type="STRING" length="1"/>
+        <discriminator-value>N</discriminator-value>
+        <attributes>
+            <id name="referencia">
+                <column length="8"/>
+            </id>
+            <basic name="descripcio">
+                <column length="30"/>
+            </basic>
+        </attributes>
+    </entity>
+    
+    <entity class="dbImplJPA.empresaImpl.IncidenciaEstadarImpl" metadata-complete="false">
+        <table name="IncidenciaEstandar"/>
+        <discriminator-value>E</discriminator-value>
+    </entity>
+    
+    <entity class="dbImplJPA.empresaImpl.IncidenciaUrgentImpl" metadata-complete="false">
+        <table name="IncidenciaUrgent"/>
+        <discriminator-value>U</discriminator-value>
+    </entity>
     
 </entity-mappings>
