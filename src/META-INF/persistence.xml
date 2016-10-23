@@ -39,7 +39,7 @@
     <class>dbImplJPA.empresaImpl.IncidenciaUrgentImpl</class>
     <class>dbImplJPA.empresaImpl.IncidenciaEstadarImpl</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="/home/professor/Escriptori/curs16-17/bd_in"/>
+      <property name="javax.persistence.jdbc.url" value="bd_in"/>
       <property name="javax.persistence.jdbc.user" value="admin"/>
       <property name="javax.persistence.jdbc.password" value="admin"/>
     </properties>
