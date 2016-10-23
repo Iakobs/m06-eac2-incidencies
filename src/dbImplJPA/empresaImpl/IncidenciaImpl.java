@@ -16,6 +16,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
@@ -24,7 +26,13 @@ import javax.persistence.ManyToOne;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipus", length = 1, discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue(value = "N")
+@NamedQueries({
+    @NamedQuery(name = "IncidenciaImpl.obtenirIncidenciesOrdenadesPerReferencia",
+            query = "SELECT i FROM IncidenciaImpl i ORDER BY i.referencia")
+    ,
+    @NamedQuery(name = "IncidenciaImpl.obtenirIncidenciesPerEmpresa",
+            query = "SELECT i FROM IncidenciaImpl i WHERE i.empresa.nomEmpresa LIKE :nomEmpresa")
+})
 public class IncidenciaImpl implements Incidencia, Serializable {
 
     @Id

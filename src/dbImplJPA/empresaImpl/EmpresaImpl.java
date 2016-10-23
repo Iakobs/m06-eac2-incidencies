@@ -13,7 +13,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
@@ -22,13 +21,8 @@ import javax.persistence.OneToMany;
  * @author professor
  */
 @Entity
-@NamedQueries({
-    @NamedQuery(name = "EmpresaImpl.obtenirEmpresaPerCodi",
-            query = "SELECT e FROM EmpresaImpl e WHERE e.codi = :codi")
-    ,
-    @NamedQuery(name = "EmpresaImpl.obtenirEmpresesOrdenadesPerNomEmpresa",
+@NamedQuery(name = "EmpresaImpl.obtenirEmpresesOrdenadesPerNomEmpresa",
             query = "SELECT e FROM EmpresaImpl e ORDER BY e.nomEmpresa")
-})
 public class EmpresaImpl implements Empresa, Serializable {
 
     @Id

@@ -727,7 +727,7 @@ public class GestioBD extends javax.swing.JFrame {
             avis("No has seleccionat cap empresa");
             
         }else if(!empresaAMantenir.getLlistaIncidencies().isEmpty()){
-            avis("L' empresa no té incidencies");
+            avis("L' empresa té incidencies");
         }else{
             try {
                 bd.eliminar(empresaAMantenir);
@@ -783,7 +783,7 @@ public class GestioBD extends javax.swing.JFrame {
          
         // realitzacio de l'actualitzacio
         try {
-            bd.modificarCostResolucioIncidencia(m.getCodi(), tantPerCent);
+            bd.modificarCostResolucioIncidencia(m.getNomEmpresa(), tantPerCent);
              //xx  bd.modificarPreuModelsMarca(m.getCodi(), tantPerCent);
         } catch (UtilitatPersistenciaException ex) {
             Logger.getLogger(GestioBD.class.getName()).log(Level.SEVERE, null, ex);
